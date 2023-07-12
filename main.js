@@ -95,6 +95,7 @@ function getWord() {
   description.innerHTML = wordObj.desc;
   triesCount.innerHTML = tries;
 
+  inputsContainer.innerHTML = '';
   wordObj.word.split("").forEach((char) => {
     inputsContainer.innerHTML += `<input type='text' maxlength='1' disabled data-char='${char}'/>`;
 })
