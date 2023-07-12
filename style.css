@@ -62,9 +62,6 @@ body {
   text-transform: uppercase;
   background-color: #545454;
 }
-.container .card .inputs input:first-child {
-  color: transparent;
-}
 .container .card .info {
   margin: 30px 0;
 }

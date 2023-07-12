@@ -63,7 +63,6 @@ document.addEventListener("keydown", (e) => {
 
     if(e.key == wordObj.word[index]) {
       document.querySelectorAll(".inputs input")[index].value = e.key;
-      document.querySelectorAll(".inputs input")[0].style.color="aqua";
       if(index == wordObj.word.length - 1) {
         document.querySelector("audio.win").play();
         document.querySelector(".winner").classList.remove("hidden")
@@ -96,11 +95,8 @@ function getWord() {
   description.innerHTML = wordObj.desc;
   triesCount.innerHTML = tries;
 
-  inputsContainer.innerHTML = ''
   wordObj.word.split("").forEach((char) => {
     inputsContainer.innerHTML += `<input type='text' maxlength='1' disabled data-char='${char}'/>`;
 })
-document.querySelectorAll(".inputs input")[0].removeAttribute("disabled")
-  console.log( document.querySelectorAll(".inputs input")[0]);
 }
 getWord();
