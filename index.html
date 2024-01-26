@@ -1,45 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Guess Game</title>
-  <link rel="shortcut icon" href="" type="image/x-icon">
+  <title></title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-  <div class="app">
-    <div class="container">
-      <h1 class="header">Guess The Word</h1>
-      <div class="card">
-        <input class="typing" type="text" maxlength="1">
-        <div class="inputs">
-        </div>
-        <div class="info">
-          <p class="desc"></p>
-          <p class="tries">Tries Left: <span class="count"></span></p>
-        </div>
-        <button>Try Again</button>
+  <h1></h1>
+  <div class="guess-game">
+    <div class="game-area">
+      <div class="inputs"></div>
+      <div class="controls">
+        <button class="check">Check Word</button>
+        <button class="hint"> <span></span> Hints</button>
+      </div>
+      <div class="message"></div>
+    </div>
+    <div class="key-colors">
+      <h3>Key Colors</h3>
+      <div class="key-color">
+        <div class="key in-place"></div>
+        <div class="key-text">Letter is correct and in place</div>
+      </div>
+      <div class="key-color">
+        <div class="key not-in-place"></div>
+        <div class="key-text">Letter is correct but not in place</div>
+      </div>
+      <div class="key-color">
+        <div class="key wrong"></div>
+        <div class="key-text">Letter is wrong</div>
       </div>
     </div>
   </div>
+  <footer></footer>
 
-  <div class="winner hidden">
-    <lottie-player
-      src="https://assets9.lottiefiles.com/packages/lf20_0y2x6xwo.json"
-      background="transparent"
-      speed="1"
-      style="width: 100%; height: 100%"
-      loop
-      autoplay
-    ></lottie-player>
+  <div class="new-game-container hidden">
+    <button class="new-game">New Game</button>
   </div>
 
-  <audio src="audio/audios_succ.mp3" class="win"></audio>
-  <audio src="audio/loss.mp3" class="loss"></audio>
-  
-  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
+  <div class="animation hidden">
+    <dotlottie-player src="https://lottie.host/11b65749-e458-41da-a540-01c2ce969b91/UFOCivtDRI.json"
+      background="transparent" speed="1" style="width: 300px; height: 300px;" loop></dotlottie-player>
+  </div>
+
+  <audio src="./media/fail.mp3" class="fail" preload="auto" hidden></audio>
+  <video src="./media/win.mp4" class="win" preload="auto" hidden></video>
+
+
+  <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
   <script src="main.js"></script>
 </body>
+
 </html>
