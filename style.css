@@ -34,7 +34,6 @@ h1 {
 }
 
 .game-area {
-  padding: 15px;
 
   .inputs {
 
@@ -188,6 +187,44 @@ h1 {
   }
 }
 
+@media (max-width: 850px) {
+  h1 {
+    padding: 15px;
+    font-size: 28px;
+  }
+
+  .guess-game {
+    flex-direction: column !important;
+    padding: 10px !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 20px !important;
+  }
+
+  .game-area .inputs span {
+    font-size: 18px !important;
+  }
+
+  .game-area input {
+    width: 35px !important;
+    height: 35px !important;
+    font-size: 25px !important;
+  }
+
+  .key-colors {
+    padding: 5px;
+    margin-bottom: 50px;
+  }
+
+  .key-colors .key-text {
+    font-size: 17px !important;
+  }
+
+  footer {
+    padding: 20px 10px !important;
+  }
+}
+
 footer {
   position: fixed;
   width: 100%;
@@ -242,7 +279,7 @@ button.new-game {
   display: none;
 }
 
-dotlottie-player {
+.animation-player {
   width: 100% !important;
   height: 100% !important;
   scale: 1.5;

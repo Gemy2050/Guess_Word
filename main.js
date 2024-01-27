@@ -46,7 +46,7 @@ function generateInputs() {
 
     for (let j = 1; j <= wordLetters; j++) {
       tryDiv.innerHTML += `
-        <input type='text' id='guess-${i}-letter-${j}' maxLength='1'/>
+        <input type='text' id='guess-${i}-letter-${j}' maxLength='1' autocomplete='off'/>
       `;
     }
 
@@ -86,10 +86,11 @@ function handleGuess() {
 
   //* Check Letters of Word
   for (let i = 0; i < wordToGuess.length; i++) {
-    if (wordToGuess[i] == inputs[i].value) {
+    let inputValue = inputs[i].value.toLowerCase();
+    if (wordToGuess[i] == inputValue) {
       //* Letter is Correct And in Place
       inputs[i].classList.add("in-place");
-    } else if (wordToGuess.includes(inputs[i].value) && inputs[i].value != "") {
+    } else if (wordToGuess.includes(inputValue) && inputValue != "") {
       //* Letter is Correct But Not in Place
       inputs[i].classList.add("not-in-place");
       successGuess = false;
@@ -110,7 +111,7 @@ function handleGuess() {
 
     //* Play Animation & Sound
     document.querySelector(".animation").classList.remove("hidden");
-    document.querySelector("dotlottie-player").play();
+    document.querySelector(".animation-player").play();
     document.querySelector("video.win").play();
     newGame();
   } else {
@@ -203,7 +204,7 @@ function handleBackspace(event) {
 function newGame() {
   setInterval(() => {
     document.querySelector(".new-game-container").classList.remove("hidden");
-  }, 3000);
+  }, 5000);
 }
 
 document.querySelector(".new-game").onclick = function () {
