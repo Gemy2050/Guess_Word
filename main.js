@@ -142,7 +142,11 @@ function handleGuess() {
 function handleHints() {
   //* Get Random Letter From Available Letters For Hint
   let enabledInputs = [...document.querySelectorAll("input:not([disabled])")];
-  let emptyInputs = enabledInputs.filter((input) => input.value == "");
+  let wrongInputs = enabledInputs.filter(
+    (input, i) =>
+      input.value == "" ||
+      input.value.toLowerCase() != wordToGuess[i].toLowerCase()
+  );
 
   //* Check if Tries End
   if (enabledInputs.length == 0) {
@@ -161,18 +165,20 @@ function handleHints() {
     })
     .join("");
 
-  //* Check if There is Not Empty Inputs And Word is Correct
-  if (emptyInputs.length == 0 && availableLetters.length == 0) {
+  //* Check if There is No Wrong Inputs
+  if (wrongInputs.length == 0) {
     guessButton.click();
-    // alert("Word is Correct");
     return;
   } else {
     //* Get The Hint Letter Then Add It To Input
-    let randomLetterIndex = Math.trunc(Math.random() * availableLetters.length);
-    let randomLetter = availableLetters[randomLetterIndex];
+    let randomEmptyInputIndex = Math.floor(Math.random() * wrongInputs.length);
+    let randomLetterIndex = enabledInputs.indexOf(
+      wrongInputs[randomEmptyInputIndex]
+    );
+    let randomLetter = wordToGuess[randomLetterIndex];
 
-    enabledInputs[wordToGuess.indexOf(randomLetter)].value = randomLetter;
-    enabledInputs[wordToGuess.indexOf(randomLetter)].classList.add("hinted");
+    enabledInputs[randomLetterIndex].value = randomLetter;
+    enabledInputs[randomLetterIndex].classList.add("hinted");
   }
 
   //* Check Hint Count Before Decrement
